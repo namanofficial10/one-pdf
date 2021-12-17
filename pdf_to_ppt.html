@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/76c8a9c81f.js" crossorigin="anonymous"></script>
+
+	<title>1-PDF</title>
+	<style>
+		.wrapper{
+		
+			width:100%;
+			height:100%;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+		}
+
+		.file-upload{
+
+			height:400px;
+			width:400px;
+			border-radius: 50%;
+			position:relative;
+			
+			display:flex;
+			justify-content:center;
+			align-items: center;  
+
+			border:4px solid #FFFFFF;
+			overflow:hidden;
+			background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+			background-size: 100% 200%;
+			transition: all 1s;
+			color: #FFFFFF;
+			font-size:250px;
+		}
+
+		input[type='file']{
+
+			height:450px;
+			width:450px;
+			position:absolute;
+			top:0;
+			left:0;
+			opacity:0;
+				
+
+		}
+
+		&:hover{
+
+			background-position: 0 -100%;
+
+			color:#2590EB;
+
+		}
+		.ml3 {
+			font-weight: 900;
+			font-size: 3.5em;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #00B0FB;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/"><img src="/static/images/logo.jpg" alt="1-PDF" width="45" height="45"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="/"><b>Home</b></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container d-flex justify-content-center">
+		<h1 class="ml3">PDF-TO-PPT</h1>
+
+	</div>
+
+	
+	<div class="wrapper">
+		<div class="file-upload">
+			<form action="download_converted_file.html" method="POST" enctype = "multipart/form-data">
+				<input type="file" name = "pdf_file" accept="application/pdf" required/>
+				<i class="fa fa-arrow-up"></i>
+			</form>
+		</div>
+	</div>
+	<div class="container d-flex justify-content-center">
+		<b><h3 class="text-danger" style="visibility: {{visibi}};">Please upload a PDF file only!!</h3></b>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+	<div class="container fixed-bottom position-fixed">
+		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<p class="col-md-4 mb-0 text-muted">© 2021 1-PDF, Inc</p>
+
+			<a href="/"
+				class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+				<img src="/static/images/logo.jpg" width="40" height="40">
+			</a>
+
+			<ul class="nav col-md-4 justify-content-end">
+				<li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+			</ul>
+		</footer>
+	</div>
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<script>
+		var textWrapper = document.querySelector('.ml3');
+		textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+		anime.timeline({loop: false})
+			.add({
+				targets: '.ml3 .letter',
+				opacity: [0,1],
+				easing: "easeInOutQuad",
+				duration: 2250,
+				delay: (el, i) => 150 * (i+1)
+			});
+	</script>
+
+	<!-- Option 2: Separate Popper and Bootstrap JS -->
+	<!--
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+      -->
+</body>
+
+</html>
